@@ -1,0 +1,24 @@
+{
+  "name": "Seamless",
+  "version": "0.1.0",
+  "description": "seam-carving application",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "node app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRR9-Helium/seamless.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HRR9-Helium/seamless/issues"
+  },
+  "homepage": "https://github.com/HRR9-Helium/seamless#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "jasmine": "^2.3.2",
+    "morgan": "^1.6.1"
+  }
+}
