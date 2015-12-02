@@ -126,13 +126,45 @@ var picDB = new Firebase("https://dazzling-fire-2339.firebaseio.com/pics");
     picDB.orderByKey().on('value', function(snapshot){
       var snapObj = snapshot.val();
       for(key in snapObj){
-      console.log(snapObj[key]['pic'][0])
-      var imageData = new Image();
-      imageData.src = canvas.toDataURL('image/png', 1);
-      context.putImageData(imageData, 0, 0)
+        // console.log(snapObj[key]['pic'])
+        var imageData = new Image();
+        
+        imageData.src = snapObj[key]['pic']
+        console.log(imageData.src)
+        var imageSource = '<div id="firebaseImage">' +
+             '<img class="wine" src= '+ imageData.src +' />' +
+             '<div>';
+
+        var imageTemplate = Handlebars.compile(imageSource);
+        var imageResult = "";
+        imageResult = imageTemplate(imageData)
+
+        $('#myImage').append(imageResult);
+
       }
     })
   };
+
+  // function retFromFirebase(){
+  //   var imageRef = new Firebase('https://dazzling-fire-2339.firebaseio.com/pics/-K4UbxbGTstA0xD9_dCb/pic');
+    // var imageSource = '<div id="firebaseImage">' +
+    //          '<img class="wine" src="data:image/png;base64,{{image}}" />' +
+    //          '<div>';
+  //   // create a var that gets turned into a handlebars function to parse the returned JSON into the correct expressions in the predefined source template
+  //   var imageTemplate = Handlebars.compile(imageSource);
+  //   // def var for final div to be injected into the page
+  //   var imageResult = "";
+  //   // REST API call for the latest image from Firebase
+  //   var query = imageRef.limitToFirst(1);
+  //   query.on('child_added', function(snapshot) {
+  //     imageResult = imageTemplate(snapshot.val());
+  //     $('#myImage').append(imageResult);
+  //   });
+
+  // };
+
+
+
 
   // Resize the image.
   function imageResize() {
